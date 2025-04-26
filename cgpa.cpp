@@ -9,7 +9,7 @@ double CGPA(double sumOfGradeCredit,int TotalCredit) {
     else {
       return sumOfGradeCredit/TotalCredit;
     }
-  } catch(string e) {
+  } catch(const char* e) {
     cout<<e<<endl;
   }
 }
@@ -32,7 +32,8 @@ int main() {
     cout<<arr[i]<<" : "<<"[Marks (space) credit]";
     cin>>marks>>credit;
     if(marks > 100) {
-      cout<<"Please enter the marks for 100"<<endl;
+      cout<<"Please enter the marks for 100 Try again"<<endl;
+      return 0;
     }
     else if(marks >= 90) {
       gradePoints = 10;
@@ -58,12 +59,11 @@ int main() {
     else {
       cout<<"Please enter the valid marks"<<endl;exit(1);
     }
-    
-    
     sum = sum + (gradePoints * credit);
     totalCredit = totalCredit + credit;
   }
   double cgpa = CGPA(sum,totalCredit);
   cout<<"Congrajulations!!! You scored "<<cgpa<<" CGPA"<<endl;
+  delete[] arr;
   return 0;
 }
